@@ -8,7 +8,7 @@ This is a repository for algorithm contests, e.g. NOIP, so far.
 
 And when it comes to Input and Output parts, just write code below:
 
-```markdown
+```html
 <table>
 	<tr>
 		<th>输入样例</th>

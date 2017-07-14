@@ -115,17 +115,17 @@ aab<br />
 
 **样例说明**
 
-所有合法方案如下：（加下划线的部分表示取出的子串）
+所有合法方案如下：（加粗部分表示取出的子串）
 
-样例 1：<u>**aab**</u> aab / aab <u>**aab**</u>
+样例 1：**aab** aab / aab **aab**
 
-样例 2：<u>**a**</u> <u>**ab**</u> aab / <u>**a**</u> aba <u>**ab**</u> / a <u>**a**</u> ba <u>**ab**</u> / aab <u>**a**</u> <u>**ab**</u>
+样例 2：**a** **ab** aab / **a** aba **ab** / a **a** ba **ab** / aab **a** **ab**
 
-<u>**aa**</u> <u>**b**</u> aab / <u>**aa**</u> baa <u>**b**</u> / aab <u>**aa**</u> <u>**b**</u>
+**aa** **b** aab / **aa** baa **b** / aab **aa** **b**
 
-样例 3：<u>**a**</u> <u>**a**</u> <u>**b**</u> aab / <u>**a**</u> <u>**a**</u> baa <u>**b**</u> / <u>**a**</u> ab <u>**a**</u> a <u>**b**</u> / <u>**a**</u> aba <u>**a**</u> <u>**b**</u> 
+样例 3：**a** **a** **b** aab / **a** **a** baa **b** / **a** ab **a** a **b** / **a** aba **a** **b** 
 
-a <u>**a**</u> b <u>**a**</u> a <u>**b**</u> / a <u>**a**</u> ba <u>**a**</u> <u>**b**</u> / aab <u>**a**</u> <u>**a**</u> <u>**b**</u>
+a **a** b **a** a **b** / a **a** ba **a** **b** / aab **a** **a** **b**
 
 **数据规模与约定**
 

@@ -1,7 +1,5 @@
 # 1. stone
 
-**Solve**
-
 We use **bisection algorithm** to solve the problem, stone.
 
 First of all, fill in the Distance array, and don’t forget to add the Length as a unit because the start and end point are just normal like the others.

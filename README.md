@@ -1,4 +1,4 @@
-# tot-problem
+# tot problem
 
 This is a repository for algorithm contests, e.g. NOIP, so far.
 
@@ -6,7 +6,7 @@ This is a repository for algorithm contests, e.g. NOIP, so far.
 
 ### 1. I/O Parts
 
-And when it comes to Input and Output parts, just write code below:
+In README.md, when it comes to Input and Output parts, just write code below:
 
 ```html
 <table>

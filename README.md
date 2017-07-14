@@ -52,4 +52,4 @@ In README.md, when it comes to Input and Output parts, just write code below:
 </table>
 ```
 
-Remember not to type and new line for HTML code in Markdown, That'll be all.
+Remember not to type a new line for HTML code in Markdown, that'll be all.

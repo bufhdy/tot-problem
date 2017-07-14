@@ -33,7 +33,7 @@
 	</tr>
 
 	<tr>
-		<td valign="top">
+		<td>
 25 5 2<br/>
 2<br/>
 11<br/>
@@ -41,7 +41,7 @@
 17<br/>
 21<br/>
 		</td>
-		<td valign="top">4</td>
+		<td>4</td>
 	</tr>
 </table>
 
@@ -76,12 +76,12 @@
 	</tr>
 
 	<tr>
-		<td valign="top">
+		<td>
 6 3 1<br />
 aabaab<br />
 aab<br />
 		</td>
-		<td valign="top">2</td>
+		<td>2</td>
 	</tr>
 </table>
 
@@ -92,12 +92,12 @@ aab<br />
 	</tr>
 
 	<tr>
-		<td valign="top">
+		<td>
 6 3 2<br />
 aabaab<br />
 aab<br />
 		</td>
-		<td valign="top">7</td>
+		<td>7</td>
 	</tr>
 </table>
 
@@ -108,12 +108,12 @@ aab<br />
 	</tr>
 
 	<tr>
-		<td valign="top">
+		<td>
 6 3 3<br />
 aabaab<br />
 aab<br />
 		</td>
-		<td valign="top">7</td>
+		<td>7</td>
 	</tr>
 </table>
 
@@ -191,7 +191,7 @@ i 条双向航道修建在 a<sub>i</sub> 与 b<sub>i</sub> 两个星球之间，任意飞船驶过它所
 	</tr>
 
 	<tr>
-		<td valign="top">
+		<td>
 6 3<br />
 1 2 3<br />
 1 6 4<br />
@@ -202,7 +202,7 @@ i 条双向航道修建在 a<sub>i</sub> 与 b<sub>i</sub> 两个星球之间，任意飞船驶过它所
 2 5<br />
 4 5<br />
 		</td>
-		<td valign="top">11</td>
+		<td>11</td>
 	</tr>
 </table>
 

@@ -18,11 +18,6 @@ const int MAXN = 140;
 
 int main(void)
 {
-#ifndef LOCAL
-	freopen("wireless.in", "r", stdin);
-	freopen("wireless.out", "w", stdout);
-#endif // LOCAL
-
 	int Distance, Amount, Map[MAXN][MAXN] = { { 0 } };
 	cin >> Distance >> Amount;
 
@@ -61,7 +56,7 @@ int main(void)
 		}
 
 	multiset<int>::iterator it = MaxCount.end();
-    --it;
+	--it;
 
 	cout << MaxCount.count(*it) << ' ' <<
 		*it << endl;

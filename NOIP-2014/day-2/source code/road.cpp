@@ -38,25 +38,21 @@ struct Vertex {
 
 struct VertexHead : Vertex {
 	int Distance;
-	bool IsChecked;
-	bool BadPoint;
+	bool IsMarked;
 
 	VertexHead(void) :
-		Distance(INT_MAX), IsChecked(false), BadPoint(false) {}
+		Distance(INT_MAX), IsMarked(false) {}
 } Graph[MAXN];
 
-int Start, End;
-
 bool IsVisited[MAXN] = { false };
-bool IsConnected(int x)
+void SearchFirst(int Start)
 {
-	memset(IsVisited, false, sizeof(IsVisited));
-	IsVisited[x] = true;
-	stack<int> Travel;
-	Travel.push(x);
+	IsVisited[Start] = Graph[Start].IsMarked = true;
+	queue<int> Travel;
+	Travel.push(Start);
 
 	while (!Travel.empty()) {
-		int From = Travel.top();
+		int From = Travel.front();
 		Travel.pop();
 
 		Vertex *Current = Graph[From].Adjacent;
@@ -64,45 +60,14 @@ bool IsConnected(int x)
 			if (!IsVisited[Current->Index]) {
 				IsVisited[Current->Index] = true;
 
+				Graph[Current->Index].IsMarked = true;
+
 				Travel.push(Current->Index);
 			}
 
 			Current = Current->Adjacent;
 		}
 	}
-
-	return IsVisited[End];
-}
-
-void Check(int x)
-{
-	memset(IsVisited, false , sizeof(IsVisited));
-
-	stack<int> Travel;
-	Travel.push(x);
-
-	while (!Travel.empty()) {
-		int From = Travel.top();
-		Travel.pop();
-
-		Vertex *Current = Graph[x].Adjacent;
-		while (Current != NULL) {
-			if (!IsVisited[Current->Index]) {
-				IsVisited[Current->Index] = true;
-
-				if (Graph[Current->Index].BadPoint) {
-					Graph[x].IsChecked = true;
-					Graph[x].BadPoint = true;
-					return;
-				}
-			}
-
-			Current = Current->Adjacent;
-		}
-	}
-
-	Graph[x].IsChecked = true;
-	Graph[x].BadPoint = false;
 }
 
 void Search(int Start)
@@ -115,13 +80,12 @@ void Search(int Start)
 		int From = Travel.front();
 		Travel.pop();
 
+		int Count = 0;
 		Vertex *Current = Graph[From].Adjacent;
 		while (Current != NULL) {
-			if (!Graph[Current->Index].IsChecked) Check(Current->Index);
-
 			if (Graph[Current->Index].Distance == INT_MAX &&
-				!Graph[Current->Index].BadPoint) {
-					Graph[Current->Index].Distance = Graph[From].Distance + 1;
+				Graph[Current->Index].IsMarked) {
+				Graph[Current->Index].Distance = Graph[From].Distance + 1;
 
 				Travel.push(Current->Index);
 			}
@@ -131,13 +95,10 @@ void Search(int Start)
 	}
 }
 
+int Start, End;
+
 int main(void)
 {
-#ifndef LOCAL
-	freopen("road.in", "r", stdin);
-	freopen("road.out", "w", stdout);
-#endif // LOCAL
-
 	int VertexAmount, ArcAmount;
 	cin >> VertexAmount >> ArcAmount;
 
@@ -148,21 +109,35 @@ int main(void)
 		int From, To;
 		cin >> From >> To;
 
-		Graph[From].Grow(To);
+		Graph[To].Grow(From);
 	}
 
 	cin >> Start >> End;
 
-	for (int i = 1; i <= VertexAmount; ++i)
-		if (!IsConnected(i)) {
-			Graph[i].IsChecked = true;
-			Graph[i].BadPoint = true;
+	SearchFirst(End);
+
+	stack<int> Quit;
+	for (int i = 1; i <= VertexAmount; ++i) {
+		if (!Graph[i].IsMarked) {
+			Vertex *Current = Graph[i].Adjacent;
+			while (Current != NULL) {
+				Quit.push(Current->Index);
+
+				Current = Current->Adjacent;
+			}
 		}
+	}
 
-	Search(Start);
+	while (!Quit.empty()) {
+		Graph[Quit.top()].IsMarked = false;
+		Quit.pop();
+	}
 
-	if (Graph[End].Distance == INT_MAX) cout << -1 << endl;
-	else cout << Graph[End].Distance << endl;
+	Search(End);
+
+	if (Graph[Start].Distance == INT_MAX)
+		cout << -1 << endl;
+	else cout << Graph[Start].Distance << endl;
 
 	return 0;
 }

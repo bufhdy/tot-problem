@@ -59,6 +59,8 @@
 
 ## 2. 寻找道路 road
 
+<a href="https://github.com/bufhdy/tot-problem/blob/master/NOIP-2014/day-2/road.md#road">题解</a>
+
 **问题描述**
 
 在有向图G中，每条边的长度均为1，现给定起点和终点，请你在图中找一条从起点到终点的路径，该路径满足以下条件：

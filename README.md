@@ -53,3 +53,7 @@ In README.md, when it comes to Input and Output parts, just write code below:
 ```
 
 Remember not to type a new line for HTML code in Markdown, that'll be all.
+
+### 3. Images
+
+I don't know how to update images (in a safe and convenient way)...

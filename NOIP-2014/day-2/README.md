@@ -2,6 +2,8 @@
 
 ## 1. 无线网络发射器选址 wireless
 
+<a href="https://github.com/bufhdy/tot-problem/blob/master/NOIP-2014/day-2/wireless.md#wireless">题解</a>
+
 **问题描述**
 
 随着智能手机的日益普及，人们对无线网的需求日益增大。某城市决定对城市内的公共场所覆盖无线网。

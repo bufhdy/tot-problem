@@ -20,20 +20,22 @@ const int MAXN = 10005;
 struct Vertex {
 	int Index;
 
-	Vertex *Adjacent;
+	Vertex *Head, *Adjacent;
 
 	void Grow(int NewIndex)
 	{
-		Vertex *Current = this;
-
-		while (Current->Adjacent != NULL)
-			Current = Current->Adjacent;
-
-		Current->Adjacent = new Vertex();
-		Current->Adjacent->Index = NewIndex;
+		if (Head == NULL) {
+			Adjacent = new Vertex();
+			Adjacent->Index = NewIndex;
+			Head = Adjacent;
+		} else {
+			Adjacent->Adjacent = new Vertex();
+			Adjacent->Adjacent->Index = NewIndex;
+			Adjacent = Adjacent->Adjacent;
+		}
 	}
 
-	Vertex(void) : Adjacent(NULL), Index(NotAVertex) {}
+	Vertex(void) : Index(-1), Head(NULL), Adjacent(NULL) {}
 };
 
 struct VertexHead : Vertex {
@@ -55,7 +57,7 @@ void SearchFirst(int Start)
 		int From = Travel.front();
 		Travel.pop();
 
-		Vertex *Current = Graph[From].Adjacent;
+		Vertex *Current = Graph[From].Head;
 		while (Current != NULL) {
 			if (!IsVisited[Current->Index]) {
 				IsVisited[Current->Index] = true;
@@ -81,7 +83,7 @@ void Search(int Start)
 		Travel.pop();
 
 		int Count = 0;
-		Vertex *Current = Graph[From].Adjacent;
+		Vertex *Current = Graph[From].Head;
 		while (Current != NULL) {
 			if (Graph[Current->Index].Distance == INT_MAX &&
 				Graph[Current->Index].IsMarked) {
@@ -119,7 +121,7 @@ int main(void)
 	stack<int> Quit;
 	for (int i = 1; i <= VertexAmount; ++i) {
 		if (!Graph[i].IsMarked) {
-			Vertex *Current = Graph[i].Adjacent;
+			Vertex *Current = Graph[i].Head;
 			while (Current != NULL) {
 				Quit.push(Current->Index);
 

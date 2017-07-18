@@ -2,17 +2,17 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-#include <cmath>
-#include <cctype>
 #include <climits>
+#include <cctype>
+#include <cmath>
+#include <string>
 #include <algorithm>
 #include <vector>
-#include <map>
-#include <set>
+#include <stack>
 #include <queue>
 #include <deque>
-#include <string>
-#include <stack>
+#include <set>
+#include <map>
 using namespace std;
 const int MAXN = 100005;
 
@@ -34,7 +34,7 @@ int main(void)
 			Dynamic[Monotone.back()] >= Dynamic[i])
 				Monotone.pop_back();
 		Monotone.push_back(i);
-		// make nothing bigger than Dynamic[i]
+		// make nothing bigger than Dynamic[i] (biggest and last one)
 	}
 
 	for (int i = m + 1; i <= n; ++i) {

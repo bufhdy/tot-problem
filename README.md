@@ -4,25 +4,40 @@ This is a repository for algorithm contests, e.g. NOIP, so far.
 
 ## Issue
 
-### 1. Include
+### 1. main() structure
 
-Let me list the C++ head files below:
+Let me set here blocks of code for starting to write a problem:
 
 ```c++
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-#include <cmath>
-#include <cctype>
 #include <climits>
+#include <cctype>
+#include <cmath>
+#include <string>
 #include <algorithm>
 #include <vector>
-#include <map>
-#include <set>
-#include <queue>
-#include <string>
 #include <stack>
+#include <queue>
+#include <deque>
+#include <set>
+#include <map>
+using namespace std;
+const int MAXN = 1005;
+
+int main(void)
+{
+#ifndef LOCAL
+	freopen("main.in", "r", stdin);
+	freopen("main.out", "w", stdout);
+#endif // LOCAL
+
+	
+
+	return 0;
+}
 ```
 
 ### 2. I/O Parts

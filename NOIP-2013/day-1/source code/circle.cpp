@@ -21,21 +21,17 @@ int main(void)
 	freopen("circle.out", "w", stdout);
 #endif // !_DEBUG
 
-	int Amount, To, k, x;
+	long long Amount, To, k, x, Answer = 1, Temp = 10;
 	cin >> Amount >> To >> k >> x;
 
-	long long Real = 1;
+	while (k) {
+		if (k & 1)
+			Answer = (Answer * Temp) % Amount;
+		k >>= 1;
+		Temp = ((Temp % Amount) * (Temp % Amount)) % Amount;
+	}
 
-	for (int i = 0; i < k / 18; ++i)
-		Real = Real * ((long long)1e18 % Amount) % Amount;
-
-	Real = Real * ((long long)pow(10, (k % 18)) % Amount) % Amount;
-
-	int Place = 0;
-	for (int i = 0; i < Real; ++i)
-		Place = (Place + Amount - To) % Amount;
-
-	cout << (Place + x) % Amount;
+	cout << (x + (To * Answer) % Amount) % Amount << endl;
 	
 	return 0;
 }

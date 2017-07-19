@@ -2,7 +2,7 @@
 
 We use *fast power* to compute large positive integer of a number.
 
-Take 10<sup>11</sup> for instance, it can be rewrite in the form of 10<sup>2<sup>0</sup> + <sup>2<sup>1</sup> + <sup>2<sup>3</sup></sup>, and it's actually 1011 in binary notation.
+Take 10<sup>11</sup> for instance, it can be rewrite in the form of 10<sup>2<sup>0</sup> + <sup>2<sup>1</sup> + <sup>2<sup>3</sup></sup></sup>, and it's actually 1011 in binary notation.
 
 So we may write like:
 

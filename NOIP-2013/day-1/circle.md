@@ -45,7 +45,5 @@ int main(void)
 	
 	return 0;
 }
-
-// a*b mod c = (a mod c)*(b mod c) mod c}
 ```
 

@@ -1,4 +1,4 @@
-# CCF NOIP2014 Day 2
+# CCF NOIP 2014 Day 2
 
 ## 1. 无线网络发射器选址 wireless
 

@@ -34,7 +34,7 @@ int main(void)
 	freopen("main.out", "w", stdout);
 #endif // LOCAL
 
-	
+	...
 
 	return 0;
 }

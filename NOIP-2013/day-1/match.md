@@ -14,7 +14,7 @@ for (int i = 1; i <= n; ++i)
 // Inversion[Array_1[i].Position] = Array_2[i].Position also okay
 ```
 
-In typical *binary indexed tree*, we should have three basic functions:
+In typical O(log n) *binary indexed tree*, we should have three basic functions:
 
 ```c++
 int LowBit(int x)

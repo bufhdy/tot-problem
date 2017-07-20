@@ -31,19 +31,19 @@
 输出一行，包含两个整数，用一个空格隔开，分别表示能覆盖最多公共场所的安装地点方案数，以及能覆盖的最多公共场所的数量。
 
 <table>
-	<tr>
-		<th>输入样例</th>
-		<th>输出样例</th>	
-	</tr>
-	<tr>
-		<td valign="top">
+<tr>
+<th>输入样例</th>
+<th>输出样例</th>	
+</tr>
+<tr>
+<td valign="top">
 1<br />
 2<br />
 4 4 10<br />
 6 6 20<br />
-		</td>
-		<td valign="top">1 30</td>
-	</tr>
+</td>
+<td valign="top">1 30</td>
+</tr>
 </table>
 
 **数据规模与约定**
@@ -81,19 +81,19 @@
 输出只有一行，包含一个整数，表示满足题目描述的最短路径的长度。如果这样的路径不存在，输出 -1。
 
 <table>
-	<tr>
-		<th>输入样例 1</th>
-		<th>输出样例 1</th>	
-	</tr>
-	<tr>
-		<td valign="top">
+<tr>
+<th>输入样例 1</th>
+<th>输出样例 1</th>	
+</tr>
+<tr>
+<td valign="top">
 3 2<br />
 1 2<br />
 2 1<br />
 1 3<br />
-		</td>
-		<td valign="top">-1</td>
-	</tr>
+</td>
+<td valign="top">-1</td>
+</tr>
 </table>
 
 **样例说明 1**
@@ -101,12 +101,12 @@
 如上图所示，箭头表示有向道路，圆点表示城市。起点 1 与终点 3 不连通，所以满足题目描述的路径不存在，故输出 -1。
 
 <table>
-	<tr>
-		<th>输入样例 2</th>
-		<th>输出样例 2</th>	
-	</tr>
-	<tr>
-		<td valign="top">
+<tr>
+<th>输入样例 2</th>
+<th>输出样例 2</th>	
+</tr>
+<tr>
+<td valign="top">
 6 6<br />
 1 2<br />
 1 3<br />
@@ -115,9 +115,9 @@
 4 5<br />
 3 4<br />
 1 5<br />
-		</td>
-		<td valign="top">3</td>
-	</tr>
+</td>
+<td valign="top">3</td>
+</tr>
 </table>
 
 **样例说明 2**
@@ -159,58 +159,58 @@ a<sub>0</sub> + a<sub>1</sub>x + a<sub>2</sub>x<sup>2</sup> + ... + a<sub>n</sub
 接下来每行一个整数，按照从小到大的顺序依次输出方程在 [1, m] 内的一个整数解。
 
 <table>
-	<tr>
-		<th>输入样例 1</th>
-		<th>输出样例 1</th>	
-	</tr>
-	<tr>
-		<td valign="top">
+<tr>
+<th>输入样例 1</th>
+<th>输出样例 1</th>	
+</tr>
+<tr>
+<td valign="top">
 2 10<br />
 1<br />
 -2<br />
 1<br />
-		</td>
-		<td valign="top">
+</td>
+<td valign="top">
 1<br />
 1<br />
-		</td>
-	</tr>
+</td>
+</tr>
 </table>
 
 <table>
-	<tr>
-		<th>输入样例 2</th>
-		<th>输出样例 2</th>	
-	</tr>
-	<tr>
-		<td valign="top">
+<tr>
+<th>输入样例 2</th>
+<th>输出样例 2</th>	
+</tr>
+<tr>
+<td valign="top">
 2 10<br />
 2 <br />
 -3<br />
 1<br />
-		</td>
-		<td valign="top">
+</td>
+<td valign="top">
 2<br />
 1<br />
 2<br />
-		</td>
-	</tr>
+</td>
+</tr>
 </table>
 
 <table>
-	<tr>
-		<th>输入样例 3</th>
-		<th>输出样例 3</th>	
-	</tr>
-	<tr>
-		<td valign="top">
+<tr>
+<th>输入样例 3</th>
+<th>输出样例 3</th>	
+</tr>
+<tr>
+<td valign="top">
 2 10<br />
 1<br />
 3<br />
 2<br />
-		</td>
-		<td valign="top">0</td>
-	</tr>
+</td>
+<td valign="top">0</td>
+</tr>
 </table>
 
 **数据规模与约定**

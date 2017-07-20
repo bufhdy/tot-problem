@@ -27,21 +27,21 @@
 输出文件只包含一个整数，即最短跳跃距离的最大值。
 
 <table>
-	<tr>
-		<th>输入样例</th>
-		<th>输出样例</th>	
-	</tr>
-	<tr>
-		<td valign="top">
+<tr>
+<th>输入样例</th>
+<th>输出样例</th>	
+</tr>
+<tr>
+<td valign="top">
 25 5 2<br/>
 2<br/>
 11<br/>
 14<br/>
 17<br/>
 21<br/>
-		</td>
-		<td valign="top">4</td>
-	</tr>
+</td>
+<td valign="top">4</td>
+</tr>
 </table>
 
 **样例说明**
@@ -71,48 +71,48 @@
 输出共一行，包含一个整数，表示所求方案数。**由于答案可能很大，所以这里要求输出答案对 1,000,000,007 取模的结果。**
 
 <table>
-	<tr>
-		<th>输入样例 1</th>
-		<th>输出样例 1</th>	
-	</tr>
-	<tr>
-		<td valign="top">
+<tr>
+<th>输入样例 1</th>
+<th>输出样例 1</th>	
+</tr>
+<tr>
+<td valign="top">
 6 3 1<br />
 aabaab<br />
 aab<br />
-		</td>
-		<td valign="top">2</td>
-	</tr>
+</td>
+<td valign="top">2</td>
+</tr>
 </table>
 
 <table>
-	<tr>
-		<th>输入样例 2</th>
-		<th>输出样例 2</th>	
-	</tr>
-	<tr>
-		<td valign="top">
+<tr>
+<th>输入样例 2</th>
+<th>输出样例 2</th>	
+</tr>
+<tr>
+<td valign="top">
 6 3 2<br />
 aabaab<br />
 aab<br />
-		</td>
-		<td valign="top">7</td>
-	</tr>
+</td>
+<td valign="top">7</td>
+</tr>
 </table>
 
 <table>
-	<tr>
-		<th>输入样例 3</th>
-		<th>输出样例 3</th>	
-	</tr>
-	<tr>
-		<td valign="top">
+<tr>
+<th>输入样例 3</th>
+<th>输出样例 3</th>	
+</tr>
+<tr>
+<td valign="top">
 6 3 3<br />
 aabaab<br />
 aab<br />
-		</td>
-		<td valign="top">7</td>
-	</tr>
+</td>
+<td valign="top">7</td>
+</tr>
 </table>
 
 **样例说明**
@@ -185,12 +185,12 @@ i 条双向航道修建在 a<sub>i</sub> 与 b<sub>i</sub> 两个星球之间，
 共 1 行，包含 1 个整数，表示小 P 的物流公司完成阶段性工作所需要的最短时间。
 
 <table>
-	<tr>
-		<th>输入样例</th>
-		<th>输出样例</th>	
-	</tr>
-	<tr>
-		<td valign="top">
+<tr>
+<th>输入样例</th>
+<th>输出样例</th>	
+</tr>
+<tr>
+<td valign="top">
 6 3<br />
 1 2 3<br />
 1 6 4<br />
@@ -200,9 +200,9 @@ i 条双向航道修建在 a<sub>i</sub> 与 b<sub>i</sub> 两个星球之间，
 3 6<br />
 2 5<br />
 4 5<br />
-		</td>
-		<td valign="top">11</td>
-	</tr>
+</td>
+<td valign="top">11</td>
+</tr>
 </table>
 
 **样例说明**
@@ -230,126 +230,126 @@ i 条双向航道修建在 a<sub>i</sub> 与 b<sub>i</sub> 两个星球之间，
 所有测试数据的范围和特点如下表所示：
 
 <table>
-	<tr>
-		<th>测试点编号</th>
-		<th>n</th>
-		<th>m</th>
-		<th>约定</th>
-	</tr>
-	<tr>
-		<td>1</td>
-		<td rowspan="3">100</td>
-		<td>1</td>
-		<td></td>
-	</tr>
-	<tr>
-		<td>2</td>
-		<td rowspan="2">100</td>
-		<td>第 i 条航道连接 i 号星球与 i + 1 号星球</td>
-	</tr>
-	<tr>
-		<td>3</td>
-		<td></td>
-	</tr>
-	<tr>
-		<td>4</td>
-		<td>2000</td>
-		<td>1</td>
-		<td></td>
-	</tr>
-	<tr>
-		<td>5</td>
-		<td>1000</td>
-		<td>1000</td>
-		<td rowspan="3">第 i 条航道连接 i 号星球与 i + 1 号星球</td>
-	</tr>
-	<tr>
-		<td>6</td>
-		<td>2000</td>
-		<td>2000</td>
-	</tr>
-	<tr>
-		<td>7</td>
-		<td>3000</td>
-		<td>3000</td>
-	</tr>
-	<tr>
-		<td>8</td>
-		<td>1000</td>
-		<td>1000</td>
-		<td></td>
-	</tr>
-	<tr>
-		<td>9</td>
-		<td>2000</td>
-		<td>2000</td>
-		<td></td>
-	</tr>
-	<tr>
-		<td>10</td>
-		<td>3000</td>
-		<td>3000</td>
-		<td></td>
-	</tr>
-	<tr>
-		<td>11</td>
-		<td>80000</td>
-		<td rowspan="2">1</td>
-		<td></td>
-	</tr>
-	<tr>
-		<td>12</td>
-		<td>100000</td>
-		<td></td>
-	</tr>
-	<tr>
-		<td>13</td>
-		<td>70000</td>
-		<td>70000</td>
-		<td rowspan = 3D4>第 i 条航道连接 i 号星球与 i + 1 号星球</td>
-	</tr>
-	<tr>
-		<td>14</td>
-		<td>80000</td>
-		<td>80000</td>
-	</tr>
-	<tr>
-		<td>15</td>
-		<td>90000</td>
-		<td>90000</td>
-	</tr>
-	<tr>
-		<td>16</td>
-		<td>100000</td>
-		<td>100000</td>
-	</tr>
-	<tr>
-		<td>17</td>
-		<td>80000</td>
-		<td>80000</td>
-		<td></td>
-	</tr>
-	<tr>
-		<td>18</td>
-		<td>90000</td>
-		<td>90000</td>
-		<td></td>
-	</tr>
-	<tr>
-		<td>19</td>
-		<td>100000</td>
-		<td>100000</td>
-		<td></td>
-	</tr>
-	<tr>
-		<td>20</td>
-		<td>300000</td>
-		<td>300000</td>
-		<td></td>
-	</tr>
-	<tr>
-		<td>所有数据</td>
-		<td></td>
-		<td></td>
-		<td>1 ≤ a<sub>i</sub>, b<sub>i</sub>, u<sub>j</sub>, v<sub>j</sub> ≤ n,0 ≤ t<sub>i</sub> ≤ 100</td>
+<tr>
+<th>测试点编号</th>
+<th>n</th>
+<th>m</th>
+<th>约定</th>
+</tr>
+<tr>
+<td>1</td>
+<td rowspan="3">100</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td rowspan="2">100</td>
+<td>第 i 条航道连接 i 号星球与 i + 1 号星球</td>
+</tr>
+<tr>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>2000</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>1000</td>
+<td>1000</td>
+<td rowspan="3">第 i 条航道连接 i 号星球与 i + 1 号星球</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2000</td>
+<td>2000</td>
+</tr>
+<tr>
+<td>7</td>
+<td>3000</td>
+<td>3000</td>
+</tr>
+<tr>
+<td>8</td>
+<td>1000</td>
+<td>1000</td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>2000</td>
+<td>2000</td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td>3000</td>
+<td>3000</td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td>80000</td>
+<td rowspan="2">1</td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td>100000</td>
+<td></td>
+</tr>
+<tr>
+<td>13</td>
+<td>70000</td>
+<td>70000</td>
+<td rowspan = 3D4>第 i 条航道连接 i 号星球与 i + 1 号星球</td>
+</tr>
+<tr>
+<td>14</td>
+<td>80000</td>
+<td>80000</td>
+</tr>
+<tr>
+<td>15</td>
+<td>90000</td>
+<td>90000</td>
+</tr>
+<tr>
+<td>16</td>
+<td>100000</td>
+<td>100000</td>
+</tr>
+<tr>
+<td>17</td>
+<td>80000</td>
+<td>80000</td>
+<td></td>
+</tr>
+<tr>
+<td>18</td>
+<td>90000</td>
+<td>90000</td>
+<td></td>
+</tr>
+<tr>
+<td>19</td>
+<td>100000</td>
+<td>100000</td>
+<td></td>
+</tr>
+<tr>
+<td>20</td>
+<td>300000</td>
+<td>300000</td>
+<td></td>
+</tr>
+<tr>
+<td>所有数据</td>
+<td></td>
+<td></td>
+<td>1 ≤ a<sub>i</sub>, b<sub>i</sub>, u<sub>j</sub>, v<sub>j</sub> ≤ n,0 ≤ t<sub>i</sub> ≤ 100</td>
 </table>

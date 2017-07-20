@@ -15,54 +15,54 @@
 **表一 石头剪刀布升级版胜负关系**
 
 <table>
-	<tr>
-		<th>甲对乙</th>
-		<th>剪刀</th>
-		<th>石头</th>
-		<th>布</th>
-		<th>蜥蜴人</th>
-		<th>斯波克</th>
-	</tr>
-	<tr>
-		<td>剪刀</td>
-		<td>平</td>
-		<td>输</td>
-		<td>赢</td>
-		<td>赢</td>
-		<td>输</td>
-	</tr>
-	<tr>
-		<td>石头</td>
-		<td>＼</td>
-		<td>平</td>
-		<td>输</td>
-		<td>赢</td>
-		<td>输</td>
-	</tr>
-	<tr>
-		<td>布</td>
-		<td>＼</td>
-		<td>＼</td>
-		<td>平</td>
-		<td>输</td>
-		<td>赢</td>
-	</tr>
-	<tr>
-		<td>蜥蜴人</td>
-		<td>＼</td>
-		<td>＼</td>
-		<td>＼</td>
-		<td>平</td>
-		<td>赢</td>
-	</tr>
-	<tr>
-		<td>斯波克</td>
-		<td>＼</td>
-		<td>＼</td>
-		<td>＼</td>
-		<td>＼</td>
-		<td>平</td>
-	</tr>
+<tr>
+<th>甲对乙</th>
+<th>剪刀</th>
+<th>石头</th>
+<th>布</th>
+<th>蜥蜴人</th>
+<th>斯波克</th>
+</tr>
+<tr>
+<td>剪刀</td>
+<td>平</td>
+<td>输</td>
+<td>赢</td>
+<td>赢</td>
+<td>输</td>
+</tr>
+<tr>
+<td>石头</td>
+<td>＼</td>
+<td>平</td>
+<td>输</td>
+<td>赢</td>
+<td>输</td>
+</tr>
+<tr>
+<td>布</td>
+<td>＼</td>
+<td>＼</td>
+<td>平</td>
+<td>输</td>
+<td>赢</td>
+</tr>
+<tr>
+<td>蜥蜴人</td>
+<td>＼</td>
+<td>＼</td>
+<td>＼</td>
+<td>平</td>
+<td>赢</td>
+</tr>
+<tr>
+<td>斯波克</td>
+<td>＼</td>
+<td>＼</td>
+<td>＼</td>
+<td>＼</td>
+<td>平</td>
+</tr>
 </table>
 
 现在，小 A 和小 B 尝试玩这种升级版的猜拳游戏。已知他们的出拳都是有周期性规律的，但周期长度不一定相等。例如：如果小 A 以「石头－布－石头－剪刀－蜥蜴人－斯波克」长度为 6 的周期出拳，那么他的出拳序列就是「石头－布－石头－剪刀－蜥蜴人－斯波克－石头－布－石头－剪刀－蜥蜴人－斯波克－……」，而如果小 B 以「剪刀－石头－布－斯波克－蜥蜴人」长度为 5 的周期出拳，那么他出拳的序列就是「剪刀－石头－布－斯波克－蜥蜴人－剪刀－石头－布－斯波克－蜥蜴人－……」。
@@ -80,33 +80,33 @@
 输出一行，包含两个整数，以一个空格分隔，分别表示小 A、小 B 的得分。
 
 <table>
-	<tr>
-		<th>输入样例 1</th>
-		<th>输出样例 1</th>	
-	</tr>
-	<tr>
-		<td valign="top">
+<tr>
+<th>输入样例 1</th>
+<th>输出样例 1</th>	
+</tr>
+<tr>
+<td valign="top">
 10 5 6<br />
 0 1 2 3 4<br />
 0 3 4 2 1 0<br />
-		</td>
-		<td valign="top">6 2</td>
-	</tr>
+</td>
+<td valign="top">6 2</td>
+</tr>
 </table>
 
 <table>
-	<tr>
-		<th>输入样例 2</th>
-		<th>输出样例 2</th>	
-	</tr>
-	<tr>
-		<td valign="top">
+<tr>
+<th>输入样例 2</th>
+<th>输出样例 2</th>	
+</tr>
+<tr>
+<td valign="top">
 9 5 5<br />
 0 1 2 3 4<br />
 1 0 3 2 4<br />
-		</td>
-		<td valign="top">4 4</td>
-	</tr>
+</td>
+<td valign="top">4 4</td>
+</tr>
 </table>
 
 **数据规模与约定**
@@ -134,21 +134,21 @@
 输出共 1 行，包含 2 个整数，之间用一个空格隔开，依次为图 G 上联合权值的最大值和所有联合权值之和。**由于所有联合权值之和可能很大，输出它时要对10007取余。**
 
 <table>
-	<tr>
-		<th>输入样例</th>
-		<th>输出样例</th>	
-	</tr>
-	<tr>
-		<td valign="top">
+<tr>
+<th>输入样例</th>
+<th>输出样例</th>	
+</tr>
+<tr>
+<td valign="top">
 5<br />
 1 2<br />
 2 3<br />
 3 4<br />
 4 5<br />
 1 5 2 3 10<br />
-		</td>
-		<td valign="top">20 74</td>
-	</tr>
+</td>
+<td valign="top">20 74</td>
+</tr>
 </table>
 
 **样例说明**
@@ -200,12 +200,12 @@ Flappy Bird 是一款风靡一时的休闲手机游戏。玩家需要不断控�
 第二行，包含一个整数，如果第一行为 1，则输出成功完成游戏需要最少点击屏幕数，否则，输出小鸟最多可以通过多少个管道缝隙。
 
 <table>
-	<tr>
-		<th>输入样例 1</th>
-		<th>输出样例 1</th>	
-	</tr>
-	<tr>
-		<td valign="top">
+<tr>
+<th>输入样例 1</th>
+<th>输出样例 1</th>	
+</tr>
+<tr>
+<td valign="top">
 3 9<br />
 9 9<br />
 1 2<br />
@@ -222,21 +222,21 @@ Flappy Bird 是一款风靡一时的休闲手机游戏。玩家需要不断控�
 7 5 8<br />
 8 7 9<br />
 9 1 3<br />
-		</td>
-		<td valign="top">
+</td>
+<td valign="top">
 1<br />
 6<br />
-		</td>
-	</tr>
+</td>
+</tr>
 </table>
 
 <table>
-	<tr>
-		<th>输入样例 2</th>
-		<th>输出样例 2</th>	
-	</tr>
-	<tr>
-		<td valign="top">
+<tr>
+<th>输入样例 2</th>
+<th>输出样例 2</th>	
+</tr>
+<tr>
+<td valign="top">
 10 10 4<br />
 1 2<br />
 3 1<br />
@@ -252,12 +252,12 @@ Flappy Bird 是一款风靡一时的休闲手机游戏。玩家需要不断控�
 6 7 9<br />
 9 1 4<br />
 3 8 10<br />
-		</td>
-		<td valign="top">
+</td>
+<td valign="top">
 0<br />
 3<br />
-		</td>
-	</tr>
+</td>
+</tr>
 </table>
 
 **样例说明**

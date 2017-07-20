@@ -19,11 +19,6 @@ int Height[MAXN];
 
 int main(void)
 {
-#ifndef _DEBUG
-	freopen("flower.in", "r", stdin);
-	freopen("flower.out", "w", stdout);
-#endif // !_DEBUG
-
 	int n, Status = 1;
 	cin >> n;
 

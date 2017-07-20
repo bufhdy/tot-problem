@@ -15,29 +15,23 @@
 using namespace std;
 const int MAXN = 100001;
 
-int Array[MAXN];
+int Build[MAXN];
 
 int main(void)
 {
-#ifndef _DEBUG
-	freopen("block.in", "r", stdin);
-	freopen("block.out", "w", stdout);
-#endif // !_DEBUG
-
-	int n, Answer;
+	int n, Work;
 	cin >> n;
 
 	for (int i = 1; i <= n; ++i)
-		cin >> Array[i];
+		cin >> Build[i];
 
-	Answer = Array[1];
+	Work = Build[1];
 
-	for (int i = 2; i <= n; ++i) {
-		Answer += Array[i];
-		Answer -= min(Array[i], Array[i - 1]);
-	}
+	for (int i = 2; i <= n; ++i)
+		if (Build[i] > Build[i - 1])
+			Work += Build[i] - Build[i - 1];
 
-	cout << Answer << endl;
+	cout << Work << endl;
 
 	return 0;
 }

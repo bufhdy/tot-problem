@@ -16,11 +16,6 @@ using namespace std;
 
 int main(void)
 {
-#ifndef _DEBUG
-	freopen("circle.in", "r", stdin);
-	freopen("circle.out", "w", stdout);
-#endif // !_DEBUG
-
 	long long Amount, To, k, x, Answer = 1, Temp = 10;
 	cin >> Amount >> To >> k >> x;
 

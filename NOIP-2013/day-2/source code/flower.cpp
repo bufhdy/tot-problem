@@ -17,25 +17,30 @@ const int MAXN = 100005;
 
 int Height[MAXN];
 
+enum Status {
+	Begin, Peak, Trough
+};
+
 int main(void)
 {
-	int n, Status = 1;
+	int n;
 	cin >> n;
 
 	for (int i = 1; i <= n; ++i)
 		cin >> Height[i];
 
-	int Count = 1;
+	int Count = 1, Status = Begin;
+	// the first must be counted
 	for (int i = 2; i <= n; ++i) {
-		if (Height[i] > Height[i - 1])
-			if (Status != 2) {
+		if (Height[i] > Height[i - 1]) // find peak
+			if (Status != Peak) {
 				++Count;
-				Status = 2;
+				Status = Peak;
 			}
-		if (Height[i] < Height[i - 1])
-			if (Status != 3) {
+		if (Height[i] < Height[i - 1]) // find trough
+			if (Status != Trough) {
 				++Count;
-				Status = 3;
+				Status = Trough;
 			}
 	}
 

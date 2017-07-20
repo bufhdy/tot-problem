@@ -1,4 +1,4 @@
-# CCF NOIP2014 Day 1
+# CCF NOIP 2014 Day 1
 
 ## 1. 生活大爆炸版石头剪刀布 rps
 

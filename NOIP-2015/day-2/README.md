@@ -2,6 +2,8 @@
 
 ## 1. 跳石头 stone
 
+<a href="https://github.com/bufhdy/tot-problem/blob/master/NOIP-2015/day-2/stone.md#stone">题解</a>
+
 **问题描述**
 
 一年一度的「跳石头」比赛又要开始了！

@@ -1,4 +1,4 @@
-# 1. stone
+# stone
 
 We use **bisection algorithm** to solve the problem, stone.
 

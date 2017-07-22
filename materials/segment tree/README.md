@@ -263,3 +263,13 @@ long long QrySum(Interval *Current, int From, int To)
 }
 ```
 
+<br />
+
+## 四、离散化
+
+以后再补 😛。
+
+题目：
+
+1. [POJ 2528 Mayor's posters](http://poj.org/problem?id=2528)
+2. [POJ 1151 Atlantis](http://poj.org/problem?id=1151)

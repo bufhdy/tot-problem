@@ -2,7 +2,7 @@
 
 We'll first think in which way it can be to get the best result. 
 
-We can suppose that there is two 2-element arrays, { a, b } and { c, d }, ordered from smaller to bigger. Set S<sub>1</sub> = (a - c) * (a - c) + (b - d) * (b - d), and S<sub>2</sub> = (a - d) * (a - d) + (c - d) * (c - d). In this case, S<sub>1</sub> - S<sub>2</sub> = 2 * (d - c) * (a - b) < 0. Use *mathematical induction* to conclude that if the two arrays are in order, it has the mininum value.
+We can suppose that there is two 2-element arrays, { a, b } and { c, d }, ordered from smaller to bigger. Set S<sub>1</sub> = (a - c) * (a - c) + (b - d) * (b - d), and S<sub>2</sub> = (a - d) * (a - d) + (c - d) * (c - d). In this case, S<sub>1</sub> - S<sub>2</sub> = 2 * (d - c) * (a - b) < 0. Use *mathematical induction* to conclude that if the two arrays are in order, it has the minimum value.
 
 Now, what we're going to do is to find out every single inversion:
 

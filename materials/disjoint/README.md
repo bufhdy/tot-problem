@@ -12,9 +12,8 @@ struct Disjoint {
 		Count[MAXN];  // 用以存放集合中元素个数
 
 	int GetAst(int x) {
-		if (Ancestor[x] != x)
-			Ancestor[x] = GetAst(Ancestor[x]);
-		return Ancestor[x];
+		if (Ancestor[x] == x) return x;
+		else return Ancestor[x] = GetAst(Ancestor[x]);
 	}
 
 	bool Query(int x, int y) // 以祖先为集合判等依据

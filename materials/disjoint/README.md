@@ -17,7 +17,7 @@ struct Disjoint {
 		return Ancestor[x];
 	}
 
-	int Query(int x, int y) // 以祖先为集合判等依据
+	bool Query(int x, int y) // 以祖先为集合判等依据
 	{
 		return GetAst(x) == GetAst(y);
 	}

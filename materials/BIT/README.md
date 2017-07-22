@@ -34,3 +34,4 @@ int SumFromBegin(int x)
 }
 ```
 
+例题参见[火柴排序](https://github.com/bufhdy/tot-problem/blob/master/NOIP-2013/day-1/match.md#match)。

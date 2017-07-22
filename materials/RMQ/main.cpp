@@ -8,7 +8,7 @@ void Initialise(vector<int> &Array)
 		for (int i = 0; i + (1 << j) - 1 < Length; ++i)
 			F[i][j] = min(
 				F[i][j - 1], F[i + (1 << (j - 1))][j - 1]
-			); // mininum of two halves
+			); // minimum of two halves
 }
 
 int Query(int Left, int Right)

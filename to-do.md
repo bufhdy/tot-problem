@@ -4,5 +4,5 @@
 
 - [ ] equality of floating-point numbers [link](https://zhuanlan.zhihu.com/p/24695220)
 - [ ] head [link](https://zhuanlan.zhihu.com/p/25144151)
-- [ ] kruskal
-- [ ] disjoint set
+- [x] kruskal
+- [x] disjoint set

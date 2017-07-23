@@ -16,54 +16,55 @@
 using namespace std;
 const int MAXN = 200005;
 
-int To[MAXN] = { 0 }, Indegree[MAXN] = { 0 };
-bool IsVisited[MAXN] = { false };
+int To[MAXN], Indegree[MAXN];
+bool IsVisited[MAXN];
 
 int main(void)
 {
-	int Amount, MinTime;
-	cin >> Amount;
-	MinTime = Amount;
-
-	for (int i = 1; i <= Amount; i++) {
- 		cin >> To[i];
-		++Indegree[To[i]];
-	}
-
-	queue<int> Travel;
-	for (int i = 1; i <= Amount; i++)
-		if (Indegree[i] == 0) {
-			Travel.push(i);
-			IsVisited[i] = true;
-		}
-
-	while (!Travel.empty()) {
-		int Vertex = Travel.front();
-		Travel.pop();
-
-		if (--Indegree[To[Vertex]] == 0) {
-			Travel.push(To[Vertex]);
-			IsVisited[To[Vertex]] = true;
-		}
-	}
-
-	for (int i = 1; i <= Amount; i++)
-		if (!IsVisited[i]) {
-			IsVisited[i] = true;
-			int Length = 1,
-				Vertex = To[i];
-
-			while (!IsVisited[Vertex]) {
-				IsVisited[Vertex] = true;
-				Vertex = To[Vertex];
-				++Length;
-			}
-
-			if (Length <= MinTime)
-				MinTime = Length;
-		}
-
-	cout << MinTime << endl;
-
-	return 0;
+    int n;
+    cin >> n;
+    
+    for (int i = 1; i <= n; ++i) {
+        cin >> To[i];
+        ++Indegree[To[i]];
+    }
+    
+    stack<int> Travel; 
+    for (int i = 1; i <= n; ++i)
+        if (Indegree[i] == 0) {
+            Travel.push(i);
+            IsVisted[i] = true;
+        }
+    
+    while(!Travel.empty()) {
+        int x = Travel.top();
+        Travel.pop();
+        
+        if (--Indegree[To[x]] == 0) {
+            IsVisited[To[x]] = true;
+            
+            Travel.push(To[x]);
+        }
+    }
+    
+    int MinLength = INT_MAX;
+    for (int i = 1; i <= n; ++i) {
+        if (!IsVisited[i]) {
+            IsVisited[i] = true;
+            
+            int Current = To[i], Length = 1;
+            while(!IsVisited[Current]) {
+                ++Length;
+                Current = To[Current];
+                IsVisited[Current] = true;
+            }
+            
+            if (Length < MinLength)
+                MinLength = Length;
+        }
+    }
+    
+    cout << MinLength << endl;
+    
+    return 0;
 }

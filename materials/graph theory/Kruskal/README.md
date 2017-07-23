@@ -74,6 +74,8 @@ for (int i = 1; i <= AmtArc && LeftSet > 1; ++i) {
 核心代码：
 
 ```c++
+sort(Road, Road + m);
+
 int MinSpan = INT_MAX;
 for (int i = 0; i <= m - n + 1; ++i) {
 // 枚举每棵最小生成树生成树，删除最小点

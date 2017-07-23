@@ -8,7 +8,7 @@
 
 次小生成树：对于最小生成树在图的每条边，删除某一边，得到 n - 1 棵树，其中最小的一棵为次小生成树。
 
-极差最小生成树……待补。
+[极差最小生成树](https://github.com/bufhdy/tot-problem/tree/master/materials/graph%20theory/Kruskal#三极差最小生成树)
 
 <br />
 
@@ -23,6 +23,8 @@
 3. 按边权从小到大的顺序遍历每条边 e = (u, v)，记 u，v 所在的数 T<sub>u</sub>，T<sub>v</sub>。如果 T<sub>u</sub> ≠ T<sub>v</sub>，则将边 e 加入集合 T，合并 T<sub>u</sub> 和 T<sub>v</sub>。
 
 使用快排的总时间复杂度为 O(|E| log |E|)。
+
+[并查集](https://github.com/bufhdy/tot-problem/tree/master/materials/disjoint)相关知识。
 
 记录边：
 
@@ -65,7 +67,34 @@ for (int i = 1; i <= AmtArc && LeftSet > 1; ++i) {
 }
 ```
 
+<br />
 
+## 三、极差最小生成树
+
+核心代码：
+
+```c++
+int MinSpan = INT_MAX;
+for (int i = 0; i <= m - n + 1; ++i) {
+// 枚举每棵最小生成树生成树，删除最小点
+	Kruskal.Resize(n);
+	int LeftSet = n;
+	for (int j = i; j < m && LeftSet > 1; ++j) { 		
+		if (Kruskal.Query(Road[j].u, Road[j].v)) continue;
+
+		Kruskal.Merge(Road[j].u, Road[j].v);
+		--LeftSet;
+
+		if (LeftSet == 1) {
+			if (Road[j].Limit - Road[i].Limit < MinSpan) // 极差
+				MinSpan = Road[j].Limit - Road[i].Limit;
+		}
+	}
+}
+
+if (MinSpan == INT_MAX) puts("-1");
+else cout << MinSpan << endl;
+```
 
 
 

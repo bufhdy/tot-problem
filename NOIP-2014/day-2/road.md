@@ -52,8 +52,8 @@ struct Vertex {
 			Head = Adjacent;
 		} else {
 			Adjacent->Adjacent = new Vertex();
-			Adjacent->Adjacent->Index = NewIndex;
 			Adjacent = Adjacent->Adjacent;
+			Adjacent->Index = NewIndex;
 		}
 	}
 

@@ -41,7 +41,7 @@ void Initialise(int Root)
 			Ancestor[i][Level] =
 			Ancestor[
 				Ancestor[i][Level - 1]
-			][Level - 1]; // ? 
+			][Level - 1]; // 走了两段 2^(Level - 1) 的路程
 }
 ```
 
@@ -63,13 +63,13 @@ int LCA(int x, int y)
 	if (x == y)
 		return x;
 
-	for (int i = k; i >= 0; --i) // ?
+	for (int i = k; i >= 0; --i)
 		if (Ancestor[x][i] != Ancestor[y][i]) {
 			x = Ancestor[x][i];
 			y = Ancestor[y][i];
 		}
 
-	return Ancestor[x][0]; // ?
+	return Ancestor[x][0];
 }
 ```
 

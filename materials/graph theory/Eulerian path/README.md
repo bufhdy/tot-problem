@@ -23,6 +23,8 @@
 
 ## 三、无向图欧拉路径
 
+所谓「套圈法」😛。
+
 ```c++
 const int MAX_N = 100;
 int mat[MAX_N][MAX_N];

@@ -127,7 +127,7 @@ CrtMinValue = INT_MAX;
 
 ## 三、进阶操作
 
-关于线段树的更多操作：
+关于线段树的更多操作（动态算法）：
 
 1. Add(f, t, v)：将 A<sub>f</sub>, A<sub>f + 1</sub>, ... , A<sub>t</sub> 增加 v；
 2. QrySum(f, t), 计算 A<sub>f</sub> + A<sub>f + 1</sub> + ... + A<sub>t</sub>。

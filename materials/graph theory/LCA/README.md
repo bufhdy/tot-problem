@@ -4,7 +4,7 @@
 
 最近公共祖先（lowest common ancestor，LCA）是指在有根图中同时拥有 x 和 y 作为后代的最深的节点，如图。
 
-![LCA](https://raw.githubusercontent.com/bufhdy/tot-problem/master/materials/LCA/image/lca_1.png)
+![LCA](https://raw.githubusercontent.com/bufhdy/tot-problem/master/materials/graph%20theory/LCA/image/lca_1.png)
 
 <br />
 

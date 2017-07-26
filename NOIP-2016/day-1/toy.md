@@ -30,7 +30,8 @@ int main(void)
 		if (!IsRight)
 			if (IsOutside[Position] == true)
 				Position = (Position + Turn) % n;
-			else Position = ((Position - Turn) % n + n) % n; // eliminate the interference of negative numbers
+			else Position = ((Position - Turn) % n + n) % n;
+      		// eliminate the interference of negative numbers
 		else 
 			if (IsOutside[Position] == true)
 				Position = ((Position - Turn) % n + n) % n;

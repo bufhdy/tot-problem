@@ -109,6 +109,8 @@ After reading the data, BFS(`Search()`) for the cannot-be-visited vertices, and 
 
 At Last BFS again, find and print the minimum distance from End to Start, and if it's `INT_MAX`, that means there's no path between. Instead, print -1. All of them above takes 2 * O(|E| + |V|) + O(n) = O(n).
 
+<br />
+
 ## source code
 
 ```c++

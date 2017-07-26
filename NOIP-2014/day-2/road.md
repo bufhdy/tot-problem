@@ -61,6 +61,46 @@ struct Vertex {
 };
 ```
 
+Okay, at last, I wrote:
+
+```c++
+struct Vertex {
+	int To;
+	Vertex  *Next;
+
+	Vertex(void) : To(NotAVertex), Next(NULL) {}
+};
+
+struct VtxHead : Vertex {
+	... // variables that every vertex should store
+	Vertex *Head;
+
+	void Grow(int NewIndex)
+	{
+		if (Head == NULL) {
+			Next = new Vertex();
+			Next->To = NewIndex;
+			Head = Next;
+		}
+		else {
+			Next->Next = new Vertex();
+			Next = Next->Next;
+			Next->To = NewIndex;
+		}
+	}
+
+	VtxHead(void) :
+		Head(NULL),
+		...(...) {}
+} Graph[MAXN];
+```
+
+For the reason to save the space, just like:
+
+![road](https://github.com/bufhdy/tot-problem/raw/master/NOIP-2014/day-2/image/road_1.png)
+
+<br />
+
 ## solve
 
 As for the problem, I only describe the procedure of solving.

@@ -31,11 +31,12 @@ void Floyd(void)
 				Cost[From][To] = min(
 					Cost[From][Via] + Cost[Via][To],
 					Cost[From][To]
-				); // 分段走和直接走的最小值
+				); // minimum of separated and whole path
 }
 
 double Dynamic[MAXN][MAXN][2];
-// Dynamic[i][j][k] 表示在选了 j 个教室的情况下，第 i 个教室是否选择（k）
+// Dynamic[i][j][k] means that we've chosen j classroom(s)
+// and whether(k) we'll choose the classroom of i
 
 int main(void)
 {
@@ -46,7 +47,8 @@ int main(void)
 
 	for (int i = 0; i < n; ++i) {
 		scanf("%d", &Class_1[i]);
-		--Class_1[i]; // 以 0 开始保存下标，接下来的自减操作同
+		--Class_1[i];
+		// we save from index of 0 so do the decrement
 	}
 	for (int i = 0; i < n; ++i) {
 		scanf("%d", &Class_2[i]);
@@ -60,11 +62,11 @@ int main(void)
 		cin >> a >> b >> w;
 		--a, --b;
 
-		if (w < Cost[a][b]) // 排除多条路径的干扰
+		if (w < Cost[a][b]) // eliminate the interference of multi-path
 			Cost[a][b] = Cost[b][a] = w;
 	}
 
-	Floyd(); // Floyd 求多源最短路径
+	Floyd();
 
 	for (int i = 0; i < n; ++i)
 		for (int j = 0; j <= Request; ++j)
@@ -74,25 +76,25 @@ int main(void)
 	Dynamic[0][0][0] = Dynamic[0][1][1] = 0.0;
 
 	for (int i = 1; i < n; ++i)
-		for (int j = 0; j <= Request; ++j) { // 列举每种请求
+		for (int j = 0; j <= Request; ++j) { // list different requests
 			Dynamic[i][j][0] = min(
-				Dynamic[i - 1][j][0] + // 回退到前一状态
+				Dynamic[i - 1][j][0] + // back to last situation
 					Cost[Class_1[i - 1]][Class_1[i]],
-				Dynamic[i - 1][j][1] + // 加权求期望值
-					k[i - 1] * Cost[Class_2[i - 1]][Class_1[i]] + // 通过
-					(1 - k[i - 1]) * Cost[Class_1[i - 1]][Class_1[i]] // 不通过
+				Dynamic[i - 1][j][1] + // calculate the expected value by weight
+					k[i - 1] * Cost[Class_2[i - 1]][Class_1[i]] + // pass
+					(1 - k[i - 1]) * Cost[Class_1[i - 1]][Class_1[i]] // not pass
 			);
 
 			if (j > 0)
 				Dynamic[i][j][1] = min(
-					Dynamic[i - 1][j - 1][0] + // 回退到前一状态
-						k[i] * Cost[Class_1[i - 1]][Class_2[i]] + // 通过
-						(1 - k[i]) * Cost[Class_1[i - 1]][Class_1[i]], // 不通过
+					Dynamic[i - 1][j - 1][0] + // back to last situation
+						k[i] * Cost[Class_1[i - 1]][Class_2[i]] + // pass
+						(1 - k[i]) * Cost[Class_1[i - 1]][Class_1[i]], // not pass
 					Dynamic[i - 1][j - 1][1] +
-						k[i] * k[i - 1] * Cost[Class_2[i - 1]][Class_2[i]] + // 都通过
-						(1 - k[i]) * (1 - k[i - 1]) * Cost[Class_1[i - 1]][Class_1[i]] + // 都通不过
-						k[i] * (1 - k[i - 1]) * Cost[Class_1[i - 1]][Class_2[i]] + // 前一个通过
-						(1 - k[i]) * k[i - 1] * Cost[Class_2[i - 1]][Class_1[i]] // 后一个通过
+						k[i] * k[i - 1] * Cost[Class_2[i - 1]][Class_2[i]] + // both pass
+						(1 - k[i]) * (1 - k[i - 1]) * Cost[Class_1[i - 1]][Class_1[i]] + // both not pass
+						k[i] * (1 - k[i - 1]) * Cost[Class_1[i - 1]][Class_2[i]] + // pass the former
+						(1 - k[i]) * k[i - 1] * Cost[Class_2[i - 1]][Class_1[i]] // pass the latter
 				);
 		}
 

@@ -16,12 +16,14 @@ Let me set here blocks of code for starting to write a problem:
 #include <climits>
 #include <cctype>
 #include <cmath>
+#include <cfloat>
 #include <string>
 #include <algorithm>
 #include <vector>
 #include <stack>
 #include <queue>
 #include <deque>
+#include <bitset>
 #include <set>
 #include <map>
 using namespace std;

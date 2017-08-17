@@ -75,17 +75,17 @@ struct VtxHead : Vertex {
 	... // variables that every vertex should store
 	Vertex *Head;
 
-	void Grow(int NewIndex)
+	void operator += (int To)
 	{
 		if (Head == NULL) {
 			Next = new Vertex();
-			Next->To = NewIndex;
+			Next->To = To;
 			Head = Next;
 		}
 		else {
 			Next->Next = new Vertex();
 			Next = Next->Next;
-			Next->To = NewIndex;
+			Next->To = To;
 		}
 	}
 

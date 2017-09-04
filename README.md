@@ -17,6 +17,7 @@ Let me set here blocks of code for starting to write a problem:
 #include <cctype>
 #include <cmath>
 #include <cfloat>
+#include <ctime>
 #include <string>
 #include <algorithm>
 #include <vector>

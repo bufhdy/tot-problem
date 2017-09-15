@@ -19,7 +19,7 @@
 using namespace std;
 const int MAXN = 100005;
 
-struct Carpet {
+struct Main {
 	struct Carpet {
 		int xL, yD, xR, yU;
 
@@ -39,7 +39,7 @@ struct Carpet {
 		Carpet(void) {}
 	} Ceremony[MAXN];
 
-	Carpet(void)
+	Main(void)
 	{
 		int n;
 		scanf("%d", &n);
@@ -68,7 +68,7 @@ struct Carpet {
 
 int main(void)
 {
-	delete new Carpet();
+	delete new Main();
 
 	return 0;
 }

@@ -19,26 +19,26 @@
 using namespace std;
 const int MAXN = 55; // 颜色数
 
-struct Hotel {
+struct Main {
 	/*
-		题目大意：
-			从 1 到 n 编号的 n 个点，每个点有标识符 c、花费 v；
-			一个可行方案：
-				选择各异且标识符 c 相同的两点，
-				以及两点间（包括两点）的一点，使花费 v 小于预算 p；
-			求可行方案数。
-	 */
+	题目大意：
+	从 1 到 n 编号的 n 个点，每个点有标识符 c、花费 v；
+	一个可行方案：
+	选择各异且标识符 c 相同的两点，
+	以及两点间（包括两点）的一点，使花费 v 小于预算 p；
+	求可行方案数。
+	*/
 
-	int n, k, p, 
+	int n, k, p,
 		Crt, Sum = 0,
 		// LastPst：某一种标识符最后一次出现的位置；
-		LastPst[MAXN], 
+		LastPst[MAXN],
 		// CntPst：某一种标识符出现次数；
 		CntPst[MAXN],
 		// CrtCntPst：当前标识符客栈出现次数；
 		CrtCntPst[MAXN];
 
-	Hotel(void) : LastPst(), CntPst(), CrtCntPst()
+	Main(void) : LastPst(), CntPst(), CrtCntPst()
 	{
 		scanf("%d %d %d", &n, &k, &p);
 
@@ -55,7 +55,7 @@ struct Hotel {
 			LastPst[c] = i; // 记录位置和增加数量
 			++CntPst[c];
 
-			Sum += CrtCntPst[c]; 
+			Sum += CrtCntPst[c];
 		}
 
 		printf("%d\n", Sum);
@@ -64,7 +64,7 @@ struct Hotel {
 
 int main(void)
 {
-	delete new Hotel();
+	delete new Main();
 
 	return 0;
 }

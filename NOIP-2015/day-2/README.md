@@ -14,8 +14,6 @@
 
 **输入**
 
-<a href="https://github.com/bufhdy/tot-problem/blob/master/NOIP-2015/day-2/source%20code/substring.cpp">源码和题解</a>
-
 输入文件第一行包含三个整数 L，N，M，分别表示起点到终点的距离，起点和终点之间的岩石数，以及组委会至多移走的岩石数。
 
 接下来 N 行，每行一个整数，第 i 行的整数 D<sub>i</sub>（0 < D<sub>i</sub> < L）表示第 i 块岩石与起点的距离。这些岩石按与起点距离从小到大的顺序给出，且不会有两个岩石出现在同一个位置。
@@ -49,6 +47,8 @@
 <br />
 
 ## 2. 子串 substring
+
+<a href="https://github.com/bufhdy/tot-problem/blob/master/NOIP-2015/day-2/source%20code/substring.cpp">源码和题解</a>
 
 **问题描述**
 

@@ -18,114 +18,138 @@
 #include <set>
 #include <map>
 using namespace std;
-const int MAXN = 1e2 + 5;
+const int MAXN = 1e5 + 5;
 
-/*
-    「这是一个很显然的DAG，那么可以考虑拓扑排序。」
- */
+struct Brute_1 {
+	int n;
 
-struct Vtx {
-    Vtx *Next;
-    int To, Wgt;
+	struct Unit {
+		int x, y, Min, Idx;
 
-    Vtx(void) : Next(NULL) {}
+		void GetMin(void)
+		{
+			Min = min(x, y);
+			if (Min < 1)
+				Min = INT_MAX;
+		}
+
+		bool operator < (const Unit & a) const
+		{
+			return Min < a.Min;
+		}
+	} Pairs[MAXN];
+
+	Brute_1(void)
+	{
+		int Array[2];
+		scanf("%d %d", &n, &Array[0]);
+
+		for (int i = 1; i <= n - 1; ++i) {
+			scanf("%d", &Array[i % 2]);
+
+			Pairs[i] = { Array[(i - 1) % 2], Array[i % 2] };
+			Pairs[i].GetMin();
+
+			Pairs[i].Idx = i;
+		}
+
+		int Cnt= 0;
+		while (true) {
+			Unit &Crt = *min_element(Pairs + 1, Pairs + n);
+			if (Crt.Min != INT_MAX) {
+				int i = Crt.Idx;
+
+				--Pairs[i].x;
+				--Pairs[i].y;
+				Pairs[i].GetMin();
+
+				if (i - 1 >= 1) {
+					--Pairs[i - 1].y;
+					Pairs[i - 1].GetMin();
+				}
+				if (i + 1 <= n - 1) {
+					--Pairs[i + 1].x;
+					Pairs[i + 1].GetMin();
+				}
+
+				++Cnt;
+			} else break;
+		}
+
+		printf("%d\n", Cnt);
+	}
 };
 
-struct VtxHead : Vtx {
-    Vtx *Head;
-    int C, U, InDegree, OutDegree;
-
-    void Grow (int To, int Wgt)
-    {
-        if (!Head) {
-            Next = new Vtx();
-            Next->To = To;
-            Next->Wgt = Wgt;
-            Head = Next;
-        }
-        else {
-            Next->Next = new Vtx();
-            Next = Next->Next;
-            Next->To = To;
-            Next->Wgt = Wgt;
-        }
-    }
-
-    VtxHead(void) : Head(NULL),
-        InDegree(0), OutDegree(0) {}
-} Graph[MAXN];
-
 struct Main {
-    int n, p;
+	int n, Array[MAXN], SumB[MAXN],
+		f[MAXN][2], Ans, Suffix[MAXN], Tmp[MAXN][2];
+	// 表示第 i 个数的当前值为 j，它的上一个值是否为 0 的情况的答案。
+    // f[][]
 
-    void Toposort(void)
-    {
-        queue<int> Travel;
-        for (int i = 1; i <= n; ++i)
-            if (Graph[i].InDegree == 0)
-                Travel.push(i);
+	Main(void) : SumB(), Ans(INT_MAX)
+	{
+		scanf("%d", &n);
 
-        while (!Travel.empty()) {
-            int x = Travel.front();
-            Travel.pop();
+		int Max = INT_MIN;
+        for (int i = 1; i <= n; ++i) {
+			scanf("%d", Array + i);
 
-            if (Graph[x].C <= 0)
-                for (Vtx *i = Graph[x].Head;
-                    i; i = i->Next) 
-                    if (--Graph[i->To].InDegree == 0)
-                        Travel.push(i->To);
-            else 
-                for (Vtx *i = Graph[x].Head;
-                    i; i = i->Next) {
-                    Graph[i->To].C +=
-                        Graph[x].C * i->Wgt;
+			if (Array[i] > Max)
+				Max = Array[i];
+		}
 
-                    if (--Graph[i->To].InDegree == 0)
-                        Travel.push(i->To);
-                }
-        }
-    }
+		for (int i = 0; i <= Max; ++i)
+			f[i][0] = f[i][1] = Suffix[i] = 0x3f3f3f3f;
 
-    Main(void)
-    {
-        scanf("%d %d", &n, &p);
+		f[0][0] = Suffix[0] = 0;
 
-        for (int i = 1; i <= n; ++i)
-            scanf("%d %d",
-                &Graph[i].C, &Graph[i].U);
+		for (int i = 1; i <= n; ++i) {
+            for (int j = Array[i - 1] + 1; j <= Array[i]; ++j)
+				f[j][0] = f[j][1] = Suffix[j] = 0x3f3f3f3f;
 
-        for (int i = 1; i <= n; ++i)
-            if (Graph[i].C == 0)
-                Graph[i].C -= Graph[i].U;
+			for (int j = Array[i]; j >= 0; --j)
+				Tmp[j][0] = Tmp[j][1] = 0x3f3f3f3f;
 
-        for (int i = 1; i <= p; ++i) {
-            int u, v, Wgt;
-            scanf("%d %d %d", &u, &v, &Wgt);
+            for (int j = Array[i]; j >= 0; --j) {
+				if (Suffix[Array[i] - j] + Array[i] - j < Tmp[j][0])
+					Tmp[j][0] = Suffix[Array[i] - j] + Array[i] - j;
 
-            Graph[u].Grow(v, Wgt);
-            ++Graph[u].OutDegree;
-            ++Graph[v].InDegree;
-        }
+                if (f[Array[i] - j][0] + Array[i] - j < Tmp[j][0])
+					Tmp[j][0] = f[Array[i] - j][0] + Array[i] - j;
 
-        Toposort();
-
-        bool IsOut = false;
-        for (int i = 1; i <= n; ++i)
-            if (Graph[i].OutDegree == 0 &&
-                Graph[i].C > 0) {
-                printf("%d %d\n", i, Graph[i].C);
-                IsOut = true;
+                if (f[Array[i] - j][0] + Array[i] - j < Tmp[j][1])
+					Tmp[j][1] = f[Array[i] - j][0] + Array[i] - j;
             }
 
-        if (!IsOut)
-            puts("NULL");
-    }
+            Suffix[Array[i] + 1] = 0x3f3f3f3f;
+
+            for (int j = Array[i]; j >= 0; --j) {
+				f[j][0] = Tmp[j][0];
+				f[j][1] = Tmo[j][1];
+
+				Suffix[j] = min(Suffix[j + 1], f[j][1]);
+            }
+
+            Ans = f[0][0];
+
+            for (int i = 0; i <= Array[n]; ++i)
+				if (f[i][1] > Ans)
+					Ans = f[i][1];
+
+			printf("%d\n", Ans);
+		}
+	}
 };
 
 int main(void)
 {
-    delete new Main();
+#ifndef LOCAL
+	freopen("dark.in", "r", stdin);
+	freopen("dark.out", "w", stdout);
+#endif // LOCAL
 
-    return 0;
+	delete new Main();
+
+	return 0;
 }
 ```

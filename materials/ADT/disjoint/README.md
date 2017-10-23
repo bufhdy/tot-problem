@@ -57,32 +57,32 @@ struct Main {
 
 	inline void Init(void)
 	{
-     	for (int i = 0; i <= 3 * n; ++i)
+		for (int i = 0; i <= 3 * n; ++i)
 			Set[i] = i;
 		Foe = 0;
 		Self = n;
-        Target = 2 * n;
+		Target = 2 * n;
 	}
 
-    int GetSet(int x)
-    {
-        if (Set[x] == x) return x;
-        return Set[x] = GetSet(Set[x]);
-    }
+	int GetSet(int x)
+	{
+		if (Set[x] == x) return x;
+		return Set[x] = GetSet(Set[x]);
+	}
 
-    inline void Merge(int x, int y)
-    {
-    	int xSet = GetSet(x),
+	inline void Merge(int x, int y)
+	{
+		int xSet = GetSet(x),
 			ySet = GetSet(y);
 
 		Set[xSet] = ySet;
-    }
+	}
 
 	Main(void)
 	{
 		scanf("%d %d", &n, &k);
 
-        Init();
+		Init();
 
 		int Cnt = 0;
 		while (k--) {
@@ -94,29 +94,29 @@ struct Main {
 				continue;
 			}
 
-            if (Type == 1) {
+			if (Type == 1) {
 				if (x == y) continue;
 
-                if (GetSet(x + Target) == GetSet(y + Self) ||
+				if (GetSet(x + Target) == GetSet(y + Self) ||
 					GetSet(x + Foe) == GetSet(y + Self)) {
-                    ++Cnt;
-                    continue;
-                }
+					++Cnt;
+					continue;
+				}
 
 				Merge(x + Foe, y + Foe);
 				Merge(x + Self, y + Self);
-                Merge(x + Target, y + Target);
-            } else {
-            	if (GetSet(x + Self) == GetSet(y + Self) ||
+				Merge(x + Target, y + Target);
+			} else {
+				if (GetSet(x + Self) == GetSet(y + Self) ||
 					GetSet(x + Foe) == GetSet(y + Self)) {
-                    ++Cnt;
-                    continue;
-                }
+					++Cnt;
+					continue;
+				}
 
 				Merge(x + Self, y + Foe);
 				Merge(x + Target, y + Self);
-                Merge(x + Foe, y + Target);
-            }
+				Merge(x + Foe, y + Target);
+			}
 		}
 
 		printf("%d\n", Cnt);

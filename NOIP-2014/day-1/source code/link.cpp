@@ -2,130 +2,114 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-#include <cmath>
-#include <cctype>
 #include <climits>
+#include <cctype>
+#include <cmath>
+#include <cfloat>
+#include <ctime>
+#include <string>
 #include <algorithm>
 #include <vector>
-#include <map>
-#include <set>
-#include <queue>
-#include <string>
 #include <stack>
+#include <queue>
+#include <deque>
+#include <bitset>
+#include <set>
+#include <map>
 using namespace std;
-#define NotAVertex -1
+const int MAXN = 2e5 + 5,
+    MOD = 10007;
 
-const int MAXN_60 = 2005;
-const int Moder = 10007;
+struct Main {
+    struct Vtx {
+        Vtx *Next;
+        int To;
 
-struct Vertex {
-    int Index;
+        Vtx(void) : Next(NULL) {}
+    };
 
-    Vertex *Adjacent;
+    struct VtxHead : Vtx {
+        Vtx *Head;
 
-    void Grow(int NewIndex)
+        void operator += (int To)
+        {
+            if (!Head) {
+                Next = new Vtx();
+                Next->To = To;
+                Head = Next; 
+            } else {
+                Next->Next = new Vtx();
+                Next = Next->Next;
+                Next->To = To;
+            }
+        }
+
+        VtxHead(void) : Head(NULL) {}
+    } Graph[MAXN];
+
+    int n,
+        Wgt[MAXN];
+
+    Main(void)
     {
-		Vertex *Current = this;
+        scanf("%d", &n);
 
-        while (Current->Adjacent != NULL)
-            Current = Current->Adjacent;
+        for (int i = 1; i <= n - 1; ++i) {
+            int u, v;
+            scanf("%d %d", &u, &v);
 
-        Current->Adjacent = new Vertex();
-        Current->Adjacent->Index = NewIndex;
-    }
+            Graph[u] += v;
+            Graph[v] += u;
+        }
 
-    Vertex(void) : Adjacent(NULL), Index(NotAVertex) {}
-};
+        for (int i = 1; i <= n; ++i)
+            scanf("%d", Wgt + i);
+        
+        long long Sum = 0;
+        int Max = INT_MIN;
+        for (int i = 1; i <= n; ++i) {
+            int Fst = INT_MIN,
+                Sec = INT_MIN;
 
-struct VertexHead : Vertex {
-	bool IsVisited;
-    int Distance;
-	int Value;
-
-	void Reset(void) {
-		Distance = INT_MAX;
-	}
-
-	VertexHead(void) {
-		Reset();
-	}
-} Graph[MAXN_60];
-
-int MaxValue = INT_MIN, Sum = 0;
-
-void Unweighted(int Start)
-{
-    Graph[Start].Distance = 0;
-    queue<int> Travel;
-    Travel.push(Start);
-
-	while (!Travel.empty()) {
-        int From = Travel.front();
-        Travel.pop();
-
-        Vertex *Current =
-			Graph[From].Adjacent;
-
-		while (Current != NULL) {
-            if (Graph[Current->Index].Distance == INT_MAX) {
-				Graph[Current->Index].Distance = Graph[From].Distance + 1;
-				Travel.push(Current->Index);
+            vector<int> Pnt;
+            long long SumTmp = 0;
+            
+            for (Vtx *j = Graph[i].Head;
+                j; j = j->Next) {
+                Pnt.push_back(Wgt[j->To]);
+                SumTmp = (SumTmp + Wgt[j->To]) % MOD;
+                
+                if (Wgt[j->To] > Sec)
+                    if (Wgt[j->To] > Fst) {
+                        Sec = Fst;
+                        Fst = Wgt[j->To];
+                    } else Sec = Wgt[j->To];    
             }
 
-            Current = Current->Adjacent;
-		}
+            if (Fst * Sec > Max)
+                Max = Fst * Sec;
 
+            int Size = Pnt.size();
+            for (int i = 0; i < Size; ++i) {
+                Sum = (Sum + Pnt[i] * ((SumTmp - Pnt[i]) % MOD + MOD)) % MOD;
+            }
+        }
 
-	}
-}
-
-bool IsVisited[MAXN_60] = { false };
+        printf("%d %lld\n", Max, Sum);
+    }
+};
 
 int main(void)
 {
-#ifndef LOCAL
-	freopen("link.in", "r", stdin);
-	freopen("link.out", "w", stdout);
-#endif
-
-    int n; // it's just a tree
-    cin >> n;
-
-    for (int i = 1; i <= n; ++i)
-		Graph[i].Index = i;
-
-    for (int i = 1; i <= n - 1; ++i) {
-        int a, b;
-        cin >> a >> b;
-
-        Graph[a].Grow(b);
-        Graph[b].Grow(a);
-    }
-
-    for (int i = 1; i <= n; ++i) {
-        int Value;
-        cin >> Value;
-
-		Graph[i].Value = Value;
-    }
-
-    for (int i = 1; i <= n; ++i) {
-        Unweighted(i);
-
-        for (int j = 1; j <= n; ++j) {
-            if (Graph[j].Distance == 2) {
-                int Temp = Graph[i].Value * Graph[j].Value % Moder;
-                Sum = (Sum + Temp) % Moder;
-
-                if (Temp > MaxValue)
-					MaxValue = Temp;
-            }
-
-			Graph[j].Reset();
-		}
-    }
-
-    cout << MaxValue << ' ' << Sum << endl;
+    delete new Main();
 
     return 0;
 }
+/*
+5
+1 2
+2 3
+3 4
+4 5
+1 5 2 3 10
+*/

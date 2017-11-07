@@ -48,3 +48,78 @@ struct Disjoint {
 };
 ```
 
+另有，多重并查集的题目，[食物链](https://www.luogu.org/problemnew/show/2024)。在此贴出代码：
+
+```c++
+struct Main {
+	int n, k, Foe, Self, Target,
+		Set[MAXN * 3];
+
+	inline void Init(void)
+	{
+		for (int i = 0; i <= 3 * n; ++i)
+			Set[i] = i;
+		Foe = 0;
+		Self = n;
+		Target = 2 * n;
+	}
+
+	int GetSet(int x)
+	{
+		if (Set[x] == x) return x;
+		return Set[x] = GetSet(Set[x]);
+	}
+
+	inline void Merge(int x, int y)
+	{
+		int xSet = GetSet(x),
+			ySet = GetSet(y);
+
+		Set[xSet] = ySet;
+	}
+
+	Main(void)
+	{
+		scanf("%d %d", &n, &k);
+
+		Init();
+
+		int Cnt = 0;
+		while (k--) {
+			int Type, x, y;
+			scanf("%d %d %d", &Type, &x, &y);
+
+			if (x > n || y > n) {
+				++Cnt;
+				continue;
+			}
+
+			if (Type == 1) {
+				if (x == y) continue;
+
+				if (GetSet(x + Target) == GetSet(y + Self) ||
+					GetSet(x + Foe) == GetSet(y + Self)) {
+					++Cnt;
+					continue;
+				}
+
+				Merge(x + Foe, y + Foe);
+				Merge(x + Self, y + Self);
+				Merge(x + Target, y + Target);
+			} else {
+				if (GetSet(x + Self) == GetSet(y + Self) ||
+					GetSet(x + Foe) == GetSet(y + Self)) {
+					++Cnt;
+					continue;
+				}
+
+				Merge(x + Self, y + Foe);
+				Merge(x + Target, y + Self);
+				Merge(x + Foe, y + Target);
+			}
+		}
+
+		printf("%d\n", Cnt);
+	}
+};
+```

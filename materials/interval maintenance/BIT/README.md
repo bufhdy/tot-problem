@@ -8,7 +8,7 @@
 定义一个用于计算的函数 LowBit(x)，它返回 x 二进制右数第一位 1，包括 1 右边的 0 位，所对应的数值，这个函数的实现：
 
 ```c++
-int LowBit(int x)
+inline int LowBit(int x)
 {
 	return x & -x;
 }
@@ -17,21 +17,19 @@ int LowBit(int x)
 两个操作：
 
 ```c++
-void Edit(int x, int Delta)
+inline void Add(int x, int Val)
 {
-	for (int i = x; i <= Amount; i += LowBit(i))
-		BIT[i] += Delta;
+	for (int i = x; i <= n; i += LowBit(i))
+		BIT[i] += Val;
 }
 
-int SumFromBegin(int x)
+inline int Sum(int x)
 {
 	int Sum = 0;
-
 	for (int i = x; i > 0; i -= LowBit(i))
 		Sum += BIT[i];
-
 	return Sum;
 }
 ```
 
-例题参见[火柴排序](https://github.com/bufhdy/tot-problem/blob/master/NOIP-2013/day-1/match.md#match)。
+关于求逆序对个数的题目，参见[火柴排序](https://github.com/bufhdy/tot-problem/blob/master/NOIP-2013/day-1/match.md#match)。

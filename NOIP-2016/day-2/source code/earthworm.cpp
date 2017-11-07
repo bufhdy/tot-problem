@@ -6,6 +6,7 @@
 #include <cctype>
 #include <cmath>
 #include <cfloat>
+#include <ctime>
 #include <string>
 #include <algorithm>
 #include <vector>
@@ -16,79 +17,139 @@
 #include <set>
 #include <map>
 using namespace std;
-const int MAXN = 100005,
-	MAXM = 7000005;
-int Amount, Time, Grow, u, v, t,
-	Length[MAXN],
-	Store[3][MAXM], Left[3], Right[3];
+const int MAXN = 7e6 + 5;
 
-int MaxIndex(void)
-{
-	int MaxValue = INT_MIN, CrtIndex = -1;
+int n, m, q, u, v, t;
 
-	for (int i = 0; i < 3; ++i)
-		if (Right[i] - Left[i] >= 1 && 
-			Store[i][Left[i]] > MaxValue) {
-			MaxValue = Store[i][Left[i]];
-			
-			CrtIndex = i;
+struct Brute_1 {
+	queue<int> Ogl, Lft, Rgt;
+
+	int OglTmp[MAXN];
+
+	Brute_1(void)
+	{
+		for (int i = 1; i <= n; ++i)
+			scanf("%d", OglTmp + i);
+
+		sort(OglTmp + 1, OglTmp + n + 1);
+
+		for (int i = n; i >= 1; --i)
+			Ogl.push(OglTmp[i]);
+
+		for (int i = 1; i <= m; ++i) {
+			int Max = Ogl.front(),
+				Type = 1;
+
+			if (!Lft.empty() && Lft.front() > Max) {
+				Max = Lft.front();
+				Type = 2;
+			}
+
+			if (!Rgt.empty() && Rgt.front() > Max) {
+				Max = Rgt.front();
+				Type = 3;
+			}
+
+			if (Type == 1) Ogl.pop();
+			else if (Type == 2) Lft.pop();
+			else Rgt.pop();
+
+			printf("%d ", Max);
+
+			int Part = floor(u * Max / v);
+			Lft.push(Part);
+			Rgt.push(Max - Part);
 		}
-	
-	return CrtIndex;
-}
+	}
+};
 
-bool Compare(int x, int y)
-{
-	return x > y;
-}
+struct Main {
+	int OglTmp[MAXN], qTmp;
+
+	queue<int> Ogl, Lft, Rgt;
+
+	Main(void) : qTmp()
+	{
+		for (int i = 1; i <= n; ++i)
+			scanf("%d", OglTmp + i);
+		
+		sort(OglTmp + 1, OglTmp + n + 1);
+
+		for (int i = n; i >= 1; --i)
+			Ogl.push(OglTmp[i]);
+
+		for (int i = 1; i <= m; ++i) {
+			int Max = INT_MIN, Type;
+			
+			if (!Ogl.empty() && Ogl.front() > Max) {
+				Max = Ogl.front();
+				Type = 1;
+			}
+
+			if (!Lft.empty() && Lft.front() > Max) {
+				Max = Lft.front();
+				Type = 2;
+			}
+
+			if (!Rgt.empty() && Rgt.front() > Max) {
+				Max = Rgt.front();
+				Type = 3;
+			}
+
+			Max += qTmp;
+
+			if (Type == 1) Ogl.pop();
+			else if (Type == 2) Lft.pop();
+			else Rgt.pop();
+
+			int Part = (long long)Max * u / v,
+				Other = Max - Part;
+
+			if (i % t == 0) 
+				printf("%d ", Max);
+
+			Lft.push(Part - qTmp - q);
+			Rgt.push(Other - qTmp - q);
+
+			qTmp += q;
+		} puts("");
+
+		for (int i = 1; i <= n + m; ++i) {
+			int Max = INT_MIN, Type;
+
+			if (!Ogl.empty() && Ogl.front() > Max) {
+				Max = Ogl.front();
+				Type = 1;
+			}
+
+			if (!Lft.empty() && Lft.front() > Max) {
+				Max = Lft.front();
+				Type = 2;
+			}
+
+			if (!Rgt.empty() && Rgt.front() > Max) {
+				Max = Rgt.front();
+				Type = 3;
+			}
+
+			if (Type == 1) Ogl.pop();
+			else if (Type == 2) Lft.pop();
+			else Rgt.pop();
+
+			if (i % t == 0)
+				printf("%d ", Max + qTmp);
+		}
+
+		puts("");
+	}
+};
 
 int main(void)
 {
-#ifndef  _DEBUG
-	freopen("earthworm.in", "r", stdin);
-	freopen("earthworm.out", "w", stdout);
-#endif // ! _DEBUG
+	scanf("%d %d %d %d %d %d",
+		&n, &m, &q, &u, &v, &t);
 
-	cin >> Amount >> Time >> Grow >> u >> v >> t;
-
-	for (int i = 0; i < Amount; ++i)
-		cin >> Length[i];
-
-	sort(Length, Length + Amount, Compare);
-
-	for (int i = 0; i < Amount; ++i)
-		Store[0][i] = Length[i];
-
-	memset(Left, 0, sizeof(Left));
-	memset(Right, 0, sizeof(Right));
-	Right[0] = Amount;
-
-	int Current, CrtIndex, Temp, CrtLeft, CrtRight;
-	for (int i = 0; i < Time; ++i) {
-		CrtIndex = MaxIndex();
-		Current = Store[CrtIndex][Left[CrtIndex]++];
-		Temp = i * Grow;
-
-		if ((i + 1) % t == 0)
-			cout << Current + Temp << ' ';
-		
-		CrtLeft = (long long)(Current + Temp) * u / v;
-		CrtRight = (Current + Temp) - CrtLeft;
-		CrtLeft -= Temp, CrtRight -= Temp;
-
-		Store[1][Right[1]++] = CrtLeft - Grow;
-		Store[2][Right[2]++] = CrtRight - Grow;
-	}
-	puts("");
-
-	Temp = Time * Grow;
-	for (int i = 0; i < Amount + Time; ++i) {
-		CrtIndex = MaxIndex();
-		Current = Store[CrtIndex][Left[CrtIndex]++];
-		
-		if ((i + 1) % t == 0)
-			cout << Current + Temp << ' ';
-	}
+	delete new Main();
 
 	return 0;
 }

@@ -61,4 +61,3 @@ class Solution:
 
 s = Solution()
 print(s.longestPalindrome("12212321"))
-

@@ -4,7 +4,7 @@
 
 ## Solution
 
-It helps me review the LCS (Longest Common Substring) algorithm, though the algorithm may not help me to solve the problem.Let's talk a little bit about LCS. To solve LCS, the first thing to acquire is Longest Common Suffix. 
+It helps me review the LCS (Longest Common Substring) algorithm, though the algorithm may not help me to solve the problem. Let's talk a little bit about LCS. To solve LCS, the first thing to acquire is Longest Common Suffix. 
 
 `LCSf(i, j) = LCSf(i-1, j-1) + 1 if S[i] = T[j] else 0` is the rule of calculation. Now, if we try to solve LCS in the meantime, it goes similarly like `LCS(i, j) = LCS(i-1, j-1) + 1 if S[i] = T[j] else 0`. (We can say that LCSf is the special case of LCS, which means LCS(n, m) is the answer of LCSf.) Each time we've got LCS(i, j), it'll be compared with a maxinum, keeping up-to-dated, as well as its corresponding string. Code here:
 

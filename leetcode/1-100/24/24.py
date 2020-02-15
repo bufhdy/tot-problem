@@ -2,9 +2,7 @@ from tr import ListNode, build_list
 
 class Solution:
     def swap_nodes(self, n1: ListNode, n2: ListNode) -> ListNode:
-        tmp = n2.next
-        n2.next = n1
-        n1.next = tmp
+        n1.next, n2.next = n2.next, n1
         return n2
 
     def swapPairs(self, head: ListNode) -> ListNode:
